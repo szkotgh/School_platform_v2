@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Make;-Dev</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">DEV</h1>
+            <a href="/" class="back-btn">← 메인으로</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="register-section">
+            <div class="register-container">
+                <h2>로그인</h2>
+                <p class="register-description">덕영고등학교 소프트웨어과 학생 로그인</p>
+                
+                <form id="loginForm" class="register-form">
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요">
+                    </div>
+                    
+                    <button type="submit" class="register-btn">로그인</button>
+                </form>
+                
+                <div class="login-link">
+                    <p>계정이 없으신가요? <a href="/signup" class="signup-link">회원가입하기</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 승인 대기 모달 -->
+    <div id="pendingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>로그인 불가</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>관리자 승인 후 로그인이 가능합니다.</strong></p>
+                <p>승인까지 1-2일 정도 소요될 수 있습니다.</p>
+                <p>문의사항이 있으시면 관리자에게 연락하세요.</p>
+            </div>
+            <div class="modal-actions">
+                <button onclick="closePendingModal()" class="btn-primary">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 거부 모달 -->
+    <div id="rejectedModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>로그인 불가</h3>
+            </div>
+            <div class="modal-body">
+                <p>회원가입이 거부되었습니다.</p>
+                <p>관리자에게 문의하세요.</p>
+            </div>
+            <div class="modal-actions">
+                <button onclick="closeRejectedModal()" class="btn-primary">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

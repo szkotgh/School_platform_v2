@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - SCHOOL_PLATFORM_V2</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">DEV</a>
+            <div class="admin-nav">
+                <a href="/" class="back-btn">← 메인으로</a>
+                <button id="logoutBtn" class="logout-btn">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="admin-section">
+            <div class="admin-container">
+                <h2>관리자 대시보드</h2>
+                
+                <!-- 로그인 폼 -->
+                <div id="loginForm" class="login-form">
+                    <h3>관리자 로그인</h3>
+                    <form id="adminLoginForm" action="#" onsubmit="event.preventDefault(); return false;">
+                        <div class="form-group">
+                            <label for="adminUsername">사용자명</label>
+                            <input type="text" id="adminUsername" name="username" required placeholder="관리자 사용자명">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">비밀번호</label>
+                            <input type="password" id="adminPassword" name="password" required placeholder="비밀번호">
+                        </div>
+                        <button type="submit" class="login-btn">로그인</button>
+                    </form>
+                </div>
+
+                <!-- 관리자 대시보드 -->
+                <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+                <!-- 사이드바 토글 버튼 -->
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <span class="toggle-icon">☰</span>
+                </button>
+
+                <!-- 사이드바 오버레이 -->
+                <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+                <!-- 사이드바 -->
+                <div id="adminSidebar" class="admin-sidebar">
+                    <div class="sidebar-header">
+                        <h3>관리자 패널</h3>
+                        <button id="sidebarClose" class="sidebar-close">×</button>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <button class="nav-item active" data-section="users">
+                            <span class="nav-icon">👥</span>
+                            사용자 관리
+                        </button>
+                        <button class="nav-item" data-section="projects">
+                            <span class="nav-icon">📁</span>
+                            프로젝트 관리
+                        </button>
+                    </nav>
+                </div>
+
+                    <!-- 메인 콘텐츠 -->
+                    <div class="admin-content">
+                        <!-- 사용자 관리 섹션 -->
+                        <div id="usersSection" class="content-section active">
+                            <div class="section-header">
+                                <h2>사용자 관리</h2>
+                                <div class="section-tabs">
+                                    <button class="tab-btn active" data-tab="pending-users">승인 대기</button>
+                                    <button class="tab-btn" data-tab="approved-users">승인된 사용자</button>
+                                </div>
+                            </div>
+
+                            <!-- 승인 대기 사용자 -->
+                            <div id="pendingUsersTab" class="tab-content active">
+                                <div class="dashboard-stats">
+                                    <div class="stat-card">
+                                        <h3>대기 중인 사용자</h3>
+                                        <span id="pendingUsersCount" class="stat-number">0</span>
+                                    </div>
+                                </div>
+                                <div class="approval-section">
+                                    <h3>사용자 승인 대기 목록</h3>
+                                    <div id="pendingUsers" class="applications-list">
+                                        <!-- 대기 중인 사용자들이 여기에 표시됩니다 -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 승인된 사용자 -->
+                            <div id="approvedUsersTab" class="tab-content">
+                                <div class="dashboard-stats">
+                                    <div class="stat-card">
+                                        <h3>승인된 사용자</h3>
+                                        <span id="approvedUsersCount" class="stat-number">0</span>
+                                    </div>
+                                </div>
+                                <div class="approval-section">
+                                    <h3>승인된 사용자 목록</h3>
+                                    <div id="approvedUsers" class="applications-list">
+                                        <!-- 승인된 사용자들이 여기에 표시됩니다 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 프로젝트 관리 섹션 -->
+                        <div id="projectsSection" class="content-section">
+                            <div class="section-header">
+                                <h2>프로젝트 관리</h2>
+                                <div class="section-tabs">
+                                    <button class="tab-btn active" data-tab="pending-projects">승인 대기</button>
+                                    <button class="tab-btn" data-tab="approved-projects">승인 완료</button>
+                                </div>
+                            </div>
+
+                            <!-- 승인 대기 프로젝트 -->
+                            <div id="pendingProjectsTab" class="tab-content active">
+                                <div class="dashboard-stats">
+                                    <div class="stat-card">
+                                        <h3>대기 중인 신청</h3>
+                                        <span id="pendingCount" class="stat-number">0</span>
+                                    </div>
+                                </div>
+                                <div class="approval-section">
+                                    <h3>프로젝트 승인 대기 목록</h3>
+                                    <div id="pendingApplications" class="applications-list">
+                                        <!-- 대기 중인 신청들이 여기에 표시됩니다 -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 승인 완료 프로젝트 -->
+                            <div id="approvedProjectsTab" class="tab-content">
+                                <div class="dashboard-stats">
+                                    <div class="stat-card">
+                                        <h3>승인된 프로젝트</h3>
+                                        <span id="approvedCount" class="stat-number">0</span>
+                                    </div>
+                                </div>
+                                <div class="approved-section">
+                                    <h3>승인된 프로젝트 관리</h3>
+                                    <div id="approvedProjects" class="projects-list">
+                                        <!-- 승인된 프로젝트들이 여기에 표시됩니다 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 프로젝트 수정 모달 -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>프로젝트 수정</h3>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <form id="editProjectForm">
+                <div class="form-group">
+                    <label for="editTitle">프로젝트 제목</label>
+                    <input type="text" id="editTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">프로젝트 설명</label>
+                    <textarea id="editDescription" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editProjectUrl">프로젝트 URL</label>
+                    <input type="url" id="editProjectUrl" name="project_url">
+                </div>
+                <div class="form-group">
+                    <label for="editImageSize">이미지 크기</label>
+                    <select id="editImageSize" name="image_size">
+                        <option value="small">작게</option>
+                        <option value="medium">보통</option>
+                        <option value="large">크게</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editDetailUrl">상세 페이지 URL</label>
+                    <input type="text" id="editDetailUrl" name="detail_url" placeholder="예: my-awesome-project">
+                </div>
+                <div class="form-group">
+                    <label for="editDetailDescription">상세 설명</label>
+                    <textarea id="editDetailDescription" name="detail_description" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editFeatures">주요 기능</label>
+                    <textarea id="editFeatures" name="features" rows="3" placeholder="기능1, 기능2, 기능3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTechStack">기술 스택</label>
+                    <textarea id="editTechStack" name="tech_stack" rows="3" placeholder="React, Node.js, MongoDB"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editLinks">관련 링크</label>
+                    <textarea id="editLinks" name="links" rows="2" placeholder="GitHub: https://github.com/..., Demo: https://demo.com"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editDetailImages">프로젝트 이미지들</label>
+                    <div class="image-upload-container">
+                        <input type="file" id="editDetailImages" name="detail_images" multiple accept="image/*">
+                        <input type="hidden" id="editDetailImagesJson" name="detail_images_json">
+                        <button type="button" id="editImageUploadBtn" class="upload-btn">여러 이미지 업로드</button>
+                        <div id="editImagesPreview" class="images-preview"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeEditModal()" class="btn-secondary">취소</button>
+                    <button type="submit" class="btn-primary">저장</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

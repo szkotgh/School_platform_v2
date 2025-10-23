@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make;-Dev</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">DEV</h1>
+            <div class="auth-nav">
+                <div id="userInfo" class="user-info" style="display: none;">
+                    <span id="userName"></span>
+                    <a href="/register" class="register-btn">등록신청</a>
+                    <button id="logoutBtn" class="logout-btn">로그아웃</button>
+                </div>
+                <div id="guestNav" class="guest-nav">
+                    <a href="/login" class="login-btn">로그인</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-container">
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="projects-container">
+                <div id="projects-grid" class="projects-grid">
+                    <!-- 프로젝트 카드들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

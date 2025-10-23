@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 등록 신청 - SCHOOL_PLATFORM_V2</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">DEV</h1>
+            <a href="/" class="back-btn">← 메인으로</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="register-section">
+            <div class="register-container">
+                <div class="register-content">
+                    <div class="register-intro">
+                        <h2>Welcome to School Platform V2</h2>
+                        <p class="intro-text">덕영고등학교 소프트웨어과 프로젝트 등록신청 페이지 입니다.</p>
+                        <p class="intro-text">세상에 단 하나뿐인 여러분의 아이디어를 실현하며, 실제 서비스로 발전시키는 과정을 직접 경험할 수 있습니다.
+                            이 과정을 통해 개발 실력은 물론, 기획력과 문제 해결 능력까지 한층 더 성장하는 자신을 만나보세요.</p>
+                    </div>
+                    
+                    <div class="register-form-section">
+                        <h2>프로젝트 등록 신청</h2>
+                        <p class="register-description">자신의 프로젝트를 덕영고등학교에 배포해 보세요!</p>
+                
+                <form id="registerForm" class="register-form">
+                    <div class="form-group">
+                        <label for="projectTitle">프로젝트 제목 *</label>
+                        <input type="text" id="projectTitle" name="title" required placeholder="프로젝트 제목을 입력하세요">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">프로젝트 설명 *</label>
+                        <textarea id="projectDescription" name="description" required placeholder="프로젝트에 대한 설명을 입력하세요"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">카테고리 *</label>
+                        <select id="category" name="category" required>
+                            <option value="">카테고리를 선택하세요</option>
+                            <option value="웹">웹</option>
+                            <option value="앱">앱</option>
+                            <option value="게임">게임</option>
+                            <option value="기타">기타</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">연락처 *</label>
+                        <input type="tel" id="contact" name="contact" required placeholder="연락처를 입력하세요 (예: 010-1234-5678)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectUrl">프로젝트 URL</label>
+                        <input type="url" id="projectUrl" name="project_url" placeholder="프로젝트 URL을 입력하세요">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageSize">이미지 크기</label>
+                        <select id="imageSize" name="image_size">
+                            <option value="cover">커버</option>
+                            <option value="contain">포함</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="detailDescription">상세 설명</label>
+                        <textarea id="detailDescription" name="detail_description" rows="4" placeholder="프로젝트에 대한 자세한 설명을 입력하세요"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="features">주요 기능</label>
+                        <textarea id="features" name="features" rows="3" placeholder="기능1, 기능2, 기능3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="techStack">기술 스택</label>
+                        <textarea id="techStack" name="tech_stack" rows="3" placeholder="React, Node.js, MongoDB"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="links">관련 링크</label>
+                        <textarea id="links" name="links" rows="2" placeholder="GitHub: https://github.com/..., Demo: https://demo.com"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectImages">프로젝트 이미지 (최대 10장)</label>
+                        <input type="file" id="projectImages" name="project_images" accept="image/*" multiple>
+                        <div id="imagesPreview" class="images-preview"></div>
+                    </div>
+
+                    
+
+                    <button type="submit" class="submit-btn">등록요청하기</button>
+                </form>
+
+                        <div id="successMessage" class="success-message" style="display: none;">
+                            <h3>등록 신청이 완료되었습니다!</h3>
+                            <p>검토 후 승인되면 프로젝트가 등록됩니다.</p>
+                            <a href="/" class="back-to-main">메인 페이지로 돌아가기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
