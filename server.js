@@ -8,7 +8,7 @@ const multer = require('multer');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // 업로드 디렉토리 생성
 const uploadDir = path.join(__dirname, 'public', 'uploads');
