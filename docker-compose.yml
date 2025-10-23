@@ -6,7 +6,7 @@ services:
     ports:
       - 9192:9192
     volumes:
-      - db_data:/app/database.sqlite
+      - db_data:/app/database
       - uploads_data:/app/public/uploads
     environment:
       - NODE_ENV=production
