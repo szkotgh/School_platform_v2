@@ -6,6 +6,8 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const fs = require('fs');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
